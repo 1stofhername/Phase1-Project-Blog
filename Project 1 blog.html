@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='UTF-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/Users/Alicia/Development/code/Projects/phase1-project-blog/style.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Notable' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Michroma' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Alumni Sans' rel='stylesheet'>
+        <title>Phase 1 JS Project Blog</title>
+    </head>
+    <body>
+       
+        <div id = 'blog-header'>
+            <h1>Community Powered By Programming</h1>
+        </div> 
+        <span class= 'subtitle'>The  WHY  of  Cul-de-sac</span>
+        <p>
+            Throughout my life, I have always seen great value in community. Some of the most enriching parts of my life were the result of completely random meetings and interactions, during which I discovered a neighbor/friend who was willing to share knowledge, skills, or gear/tools with me. This lead me to the question, how could I use programming to facilitate these types of interactions?</p>
+        <p>I recalled my upbringing living in a cul-de-sac, and how the unique arrangement of a cul-de-sac where all houses faced one another, facilitated getting to know our neighbors and allowed our community to easily identify and meet each other’s needs. For instance, my neighbor who was a mechanic noticing the brakes on my bicycle were loose, grabbing his tools and fixing them for me. Or, us kids seeing our elderly neighbor’s dogs always barking at us from the behind her fence and offering to take them on walks for her. Living on a regular linear street, it seemed much harder to establish those types of relationships with neighbors.</p>
+        <p>While I can’t rearrange the physical shapes of neighborhoods, my project app, cul-de-sac is meant to allow neighbors to face each other figuratively, and see and meet each other’s needs and those of their community as a whole. Users of the Cul-de-sac app can both post and view:</p>
+
+            <ul>
+            <li>events (e.g. food or clothing drives), 
+            <li>calls to action (e.g. support a struggling local business), 
+            <li>personal or community needs(e.g. trash cleanup), or
+            <li> resources (e.g. knowledge/skill/tool sharing).
+            </ul>
+        
+        <span class= 'subtitle'>HOW  Cul-de-sac  Uses  Class  Constructor  Methods</span>
+
+        <p>My project uses forms in conjunction with class constructor methods to instantiate data objects that are posted to the json file when the user submits the form.</p>
+        <p>The variety of post types listed above, demonstrate the variety of types of data keys and values the form will need to handle. While it currently handles just one type of post (events), the use of parent classes and sub classes allows the flexibility to handle both the common and unique pieces of information that a user will enter depending on the type of event they are posting. </p>
+        <p>The PostEvent class below receives data from the form input.</p>
+            <br>
+            <pre>
+            class PostEvent {
+            constructor(title, facilitator, image, goals, date, startTime, startTimeAmPm, endTime, endTimeAmPm){
+            this.title = title;
+            this.facilitator = facilitator;
+            this.image = image;
+            this.goals = goals;
+            this.date = date;
+            this.startTime = startTime+startTimeAmPm;
+            this.endTime = endTime+endTimeAmPm;
+            this.participants = 0; 
+            }
+        </pre>
+        <p>As the app is expanded to accept more types of events, the data objects will need to change. For instance, a person who is attempting to post their skills as a community resource will not need to enter a date or time. A more generic parent class can be used to instantiate the data that all the posts share in common, such as the title, facilitator, image, and goals.</p>
+            <pre>
+            class Post {
+            constructor(title, facilitator, image, goals){
+            this.title = title;
+            this.facilitator = facilitator;
+            this.image = image;
+            this.goals = goals;
+            } }</pre>
+
+        <p>With the parent superclass in place, a subclass can then be used that extends the Post class while including other pieces of information unique to the specific post types.</p>
+            <pre>
+            class Event extends Post {
+            constructor(title,facilitator, image, goals, date, startTime, endTime, participants)
+            {
+            super(title, facilitator, image, goals)
+            this.date = date;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.participants = 0; } }
+            </pre>
+            <p>This child class makes use of the super method, the invocation of which will instantiate the  title, facilitator, image, and goals value, which will be inherited by the Event subclass before instantiating the properties unique to the Event class. These constructor methods and super methods will make handling the variety of data keys and values much easier than manually creating objects and using interpolation as the app grows in functionality and complexity.</p>
+    </body>
+</html>

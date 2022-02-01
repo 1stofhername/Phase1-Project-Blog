@@ -1,0 +1,41 @@
+
+#blog-header {
+    display: flex;
+    justify-content: center;
+    background-image:url("https://wineandblooms.com/wp-content/uploads/2019/12/WB-Create-Your-New-Year-Plant-Journal-houseplant-leaf-header.png");
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    opacity: .8;
+}
+
+h1{
+    padding:3rem;
+    color:whitesmoke;
+    font-family: 'Notable', 'sans-serif';
+    font-size: 40px;
+}
+
+.subtitle {
+    font-family: 'Michroma', 'sas-serif';
+    color:whitesmoke;
+    background-color:rgb(66, 66, 66);
+    padding:0.1em 0.4em;
+    font-size: 20px;
+}
+
+p {
+    font-family: 'Alumni Sans', Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+li {
+    font-family: 'Alumni Sans', Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+code{
+    font-size:1em;
+}
